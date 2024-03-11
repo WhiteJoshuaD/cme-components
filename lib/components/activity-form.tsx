@@ -52,10 +52,11 @@ const formSchema = z.object({
 export type ActivityFormValues = z.infer<typeof formSchema>;
 
 type ActivityFormProps = {
+  publishableKey: string;
   onSubmit: (values: ActivityFormValues) => void;
 };
 
-export function ActivityForm({ onSubmit }: ActivityFormProps) {
+export function ActivityForm({ publishableKey, onSubmit }: ActivityFormProps) {
   const form = useForm<ActivityFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -116,7 +117,7 @@ export function ActivityForm({ onSubmit }: ActivityFormProps) {
 
           <hr />
 
-          <Credits />
+          <Credits publishableKey={publishableKey} />
         </div>
 
         <Button type="submit">Submit</Button>
@@ -125,8 +126,8 @@ export function ActivityForm({ onSubmit }: ActivityFormProps) {
   );
 }
 
-function Credits() {
-  const { creditTypes } = useCreditTypes();
+function Credits({ publishableKey }: { publishableKey: string }) {
+  const { creditTypes } = useCreditTypes({ publishableKey });
   const form = useFormContext();
 
   const { fields, append, remove } = useFieldArray({
@@ -213,12 +214,16 @@ type CreditType = {
   description?: string;
 };
 
-async function fetchCreditTypes(): Promise<CreditType[]> {
+async function fetchCreditTypes({
+  publishableKey,
+}: {
+  publishableKey: string;
+}): Promise<CreditType[]> {
   const res = await fetch("http://localhost:5000/credit-types", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+      Authorization: `Bearer ${publishableKey}`,
     },
   });
 
@@ -229,8 +234,10 @@ async function fetchCreditTypes(): Promise<CreditType[]> {
   return data.data;
 }
 
-function useCreditTypes() {
-  const { data, error, isLoading } = useSWR(["creditTypes"], fetchCreditTypes);
+function useCreditTypes({ publishableKey }: { publishableKey: string }) {
+  const { data, error, isLoading } = useSWR(["creditTypes"], () =>
+    fetchCreditTypes({ publishableKey })
+  );
 
   return {
     creditTypes: data,
