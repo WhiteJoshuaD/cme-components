@@ -10731,8 +10731,8 @@ const Pa = (e) => Dt.string().transform((t) => t === "" ? null : t).nullable().r
     })
   ).nonempty()
 });
-function Gv({ onSubmit: e }) {
-  const t = bu({
+function Gv({ publishableKey: e, onSubmit: t }) {
+  const r = bu({
     resolver: Su(Ym),
     defaultValues: {
       credits: [
@@ -10743,16 +10743,16 @@ function Gv({ onSubmit: e }) {
       ]
     }
   });
-  return /* @__PURE__ */ D(Gf, { ...t, children: /* @__PURE__ */ tt("form", { onSubmit: t.handleSubmit(e), children: [
+  return /* @__PURE__ */ D(Gf, { ...r, children: /* @__PURE__ */ tt("form", { onSubmit: r.handleSubmit(t), children: [
     /* @__PURE__ */ tt("div", { className: "space-y-8", children: [
       /* @__PURE__ */ D(
         Tn,
         {
-          control: t.control,
+          control: r.control,
           name: "name",
-          render: ({ field: r }) => /* @__PURE__ */ tt(Ur, { children: [
+          render: ({ field: n }) => /* @__PURE__ */ tt(Ur, { children: [
             /* @__PURE__ */ D(Br, { children: "Name" }),
-            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...r }) }),
+            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...n }) }),
             /* @__PURE__ */ D(Zr, {})
           ] })
         }
@@ -10760,11 +10760,11 @@ function Gv({ onSubmit: e }) {
       /* @__PURE__ */ D(
         Tn,
         {
-          control: t.control,
+          control: r.control,
           name: "description",
-          render: ({ field: r }) => /* @__PURE__ */ tt(Ur, { children: [
+          render: ({ field: n }) => /* @__PURE__ */ tt(Ur, { children: [
             /* @__PURE__ */ D(Br, { children: "Description" }),
-            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(Fl, { ...r }) }),
+            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(Fl, { ...n }) }),
             /* @__PURE__ */ D(Zr, {})
           ] })
         }
@@ -10772,43 +10772,43 @@ function Gv({ onSubmit: e }) {
       /* @__PURE__ */ D(
         Tn,
         {
-          control: t.control,
+          control: r.control,
           name: "location",
-          render: ({ field: r }) => /* @__PURE__ */ tt(Ur, { children: [
+          render: ({ field: n }) => /* @__PURE__ */ tt(Ur, { children: [
             /* @__PURE__ */ D(Br, { children: "Location" }),
-            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...r }) }),
+            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...n }) }),
             /* @__PURE__ */ D(Zr, {})
           ] })
         }
       ),
       /* @__PURE__ */ D("hr", {}),
-      /* @__PURE__ */ D(Xm, {})
+      /* @__PURE__ */ D(Xm, { publishableKey: e })
     ] }),
     /* @__PURE__ */ D(Us, { type: "submit", children: "Submit" })
   ] }) });
 }
-function Xm() {
-  const { creditTypes: e } = ev(), t = vn(), { fields: r, append: n, remove: s } = uu({
+function Xm({ publishableKey: e }) {
+  const { creditTypes: t } = ev({ publishableKey: e }), r = vn(), { fields: n, append: s, remove: i } = uu({
     name: "credits"
   });
   return /* @__PURE__ */ tt("div", { className: "space-y-6", children: [
-    r.map((i, o) => /* @__PURE__ */ tt("div", { className: "flex items-end gap-4", children: [
+    n.map((o, a) => /* @__PURE__ */ tt("div", { className: "flex items-end gap-4", children: [
       /* @__PURE__ */ D(
         Tn,
         {
-          control: t.control,
-          name: `credits.${o}.creditTypeId`,
-          render: ({ field: a }) => /* @__PURE__ */ tt(Ur, { className: "relative flex-grow", children: [
-            /* @__PURE__ */ D(Br, { className: Ue(o !== 0 && "sr-only"), children: "Credit Type" }),
-            /* @__PURE__ */ tt(qm, { value: a.value, onValueChange: a.onChange, children: [
+          control: r.control,
+          name: `credits.${a}.creditTypeId`,
+          render: ({ field: c }) => /* @__PURE__ */ tt(Ur, { className: "relative flex-grow", children: [
+            /* @__PURE__ */ D(Br, { className: Ue(a !== 0 && "sr-only"), children: "Credit Type" }),
+            /* @__PURE__ */ tt(qm, { value: c.value, onValueChange: c.onChange, children: [
               /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(Pl, { children: /* @__PURE__ */ D(Km, { placeholder: "Select a credit type" }) }) }),
-              /* @__PURE__ */ D(Dl, { children: e == null ? void 0 : e.map((c) => /* @__PURE__ */ D(
+              /* @__PURE__ */ D(Dl, { children: t == null ? void 0 : t.map((l) => /* @__PURE__ */ D(
                 Ml,
                 {
-                  value: String(c.id),
-                  children: c.name
+                  value: String(l.id),
+                  children: l.name
                 },
-                c.id
+                l.id
               )) })
             ] }),
             /* @__PURE__ */ D(Zr, { className: "absolute -translate-y-1" })
@@ -10818,11 +10818,11 @@ function Xm() {
       /* @__PURE__ */ D(
         Tn,
         {
-          control: t.control,
-          name: `credits.${o}.creditAmount`,
-          render: ({ field: a }) => /* @__PURE__ */ tt(Ur, { className: "relative w-[150px]", children: [
-            /* @__PURE__ */ D(Br, { className: Ue(o !== 0 && "sr-only"), children: "Amount" }),
-            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...a }) }),
+          control: r.control,
+          name: `credits.${a}.creditAmount`,
+          render: ({ field: c }) => /* @__PURE__ */ tt(Ur, { className: "relative w-[150px]", children: [
+            /* @__PURE__ */ D(Br, { className: Ue(a !== 0 && "sr-only"), children: "Amount" }),
+            /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...c }) }),
             /* @__PURE__ */ D(Zr, { className: "absolute -translate-y-1" })
           ] })
         }
@@ -10832,42 +10832,47 @@ function Xm() {
         {
           type: "button",
           variant: "outline",
-          disabled: r.length === 1,
-          onClick: () => s(o),
+          disabled: n.length === 1,
+          onClick: () => i(a),
           children: /* @__PURE__ */ D(Tu, { className: "size-4" })
         }
       )
-    ] }, i.id)),
+    ] }, o.id)),
     /* @__PURE__ */ D("div", { className: "flex justify-end mt-4", children: /* @__PURE__ */ D(
       Us,
       {
         type: "button",
         variant: "outline",
         size: "sm",
-        onClick: () => n({ creditTypeId: "", creditAmount: "" }),
+        onClick: () => s({ creditTypeId: "", creditAmount: "" }),
         children: "Add Credit Type"
       }
     ) })
   ] });
 }
-async function Jm() {
-  const e = await fetch("http://localhost:5000/credit-types", {
+async function Jm({
+  publishableKey: e
+}) {
+  const t = await fetch("http://localhost:5000/credit-types", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer sudf92374bfwe94bff"
+      Authorization: `Bearer ${e}`
     }
   });
-  if (!e.ok)
+  if (!t.ok)
     throw new Error("Failed to fetch");
-  return (await e.json()).data;
+  return (await t.json()).data;
 }
-function ev() {
-  const { data: e, error: t, isLoading: r } = ad(["creditTypes"], Jm);
+function ev({ publishableKey: e }) {
+  const { data: t, error: r, isLoading: n } = ad(
+    ["creditTypes"],
+    () => Jm({ publishableKey: e })
+  );
   return {
-    creditTypes: e,
-    isLoading: r,
-    isError: t
+    creditTypes: t,
+    isLoading: n,
+    isError: r
   };
 }
 var cs = class {

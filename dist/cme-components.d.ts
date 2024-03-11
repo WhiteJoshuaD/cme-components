@@ -11,9 +11,10 @@ export declare type Activity = {
     name: string;
 };
 
-export declare function ActivityForm({ onSubmit }: ActivityFormProps): JSX_2.Element;
+export declare function ActivityForm({ publishableKey, onSubmit }: ActivityFormProps): JSX_2.Element;
 
 declare type ActivityFormProps = {
+    publishableKey: string;
     onSubmit: (values: ActivityFormValues) => void;
 };
 
