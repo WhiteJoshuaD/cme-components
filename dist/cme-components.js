@@ -10853,7 +10853,7 @@ function Xm({ publishableKey: e }) {
 async function Jm({
   publishableKey: e
 }) {
-  const t = await fetch("http://localhost:5000/credit-types", {
+  const t = await fetch("https://cme-api.azurewebsites.net/credit-types", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
