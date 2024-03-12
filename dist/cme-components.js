@@ -10727,7 +10727,7 @@ const Pa = (e) => Dt.string().transform((t) => t === "" ? null : t).nullable().r
   credits: Dt.array(
     Dt.object({
       creditTypeId: Pa(Dt.number().positive("Required")),
-      creditAmount: Pa(Dt.number().positive("Required"))
+      amount: Pa(Dt.number().positive("Required"))
     })
   ).nonempty()
 });
@@ -10738,7 +10738,7 @@ function Gv({ publishableKey: e, onSubmit: t }) {
       credits: [
         {
           creditTypeId: "",
-          creditAmount: ""
+          amount: ""
         }
       ]
     }
@@ -10819,7 +10819,7 @@ function Xm({ publishableKey: e }) {
         Tn,
         {
           control: r.control,
-          name: `credits.${a}.creditAmount`,
+          name: `credits.${a}.amount`,
           render: ({ field: c }) => /* @__PURE__ */ tt(Ur, { className: "relative w-[150px]", children: [
             /* @__PURE__ */ D(Br, { className: Ue(a !== 0 && "sr-only"), children: "Amount" }),
             /* @__PURE__ */ D(Wr, { children: /* @__PURE__ */ D(qs, { ...c }) }),

@@ -37,23 +37,23 @@ declare const formSchema: z.ZodObject<{
     location: z.ZodOptional<z.ZodString>;
     credits: z.ZodArray<z.ZodObject<{
         creditTypeId: z.ZodPipeline<z.ZodEffects<z.ZodEffects<z.ZodNullable<z.ZodEffects<z.ZodString, string | null, string>>, string | null, string | null>, number, string | null>, z.ZodTypeAny>;
-        creditAmount: z.ZodPipeline<z.ZodEffects<z.ZodEffects<z.ZodNullable<z.ZodEffects<z.ZodString, string | null, string>>, string | null, string | null>, number, string | null>, z.ZodTypeAny>;
+        amount: z.ZodPipeline<z.ZodEffects<z.ZodEffects<z.ZodNullable<z.ZodEffects<z.ZodString, string | null, string>>, string | null, string | null>, number, string | null>, z.ZodTypeAny>;
     }, "strip", z.ZodTypeAny, {
         creditTypeId?: any;
-        creditAmount?: any;
+        amount?: any;
     }, {
         creditTypeId: string | null;
-        creditAmount: string | null;
+        amount: string | null;
     }>, "atleastone">;
 }, "strip", z.ZodTypeAny, {
     name: string;
     description: string;
     credits: [{
         creditTypeId?: any;
-        creditAmount?: any;
+        amount?: any;
     }, ...{
         creditTypeId?: any;
-        creditAmount?: any;
+        amount?: any;
     }[]];
     location?: string | undefined;
 }, {
@@ -61,10 +61,10 @@ declare const formSchema: z.ZodObject<{
     description: string;
     credits: [{
         creditTypeId: string | null;
-        creditAmount: string | null;
+        amount: string | null;
     }, ...{
         creditTypeId: string | null;
-        creditAmount: string | null;
+        amount: string | null;
     }[]];
     location?: string | undefined;
 }>;

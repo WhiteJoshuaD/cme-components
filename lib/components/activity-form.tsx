@@ -43,7 +43,7 @@ const formSchema = z.object({
     .array(
       z.object({
         creditTypeId: zodInputStringPipe(z.number().positive("Required")),
-        creditAmount: zodInputStringPipe(z.number().positive("Required")),
+        amount: zodInputStringPipe(z.number().positive("Required")),
       })
     )
     .nonempty(),
@@ -63,7 +63,7 @@ export function ActivityForm({ publishableKey, onSubmit }: ActivityFormProps) {
       credits: [
         {
           creditTypeId: "",
-          creditAmount: "",
+          amount: "",
         },
       ],
     },
@@ -169,7 +169,7 @@ function Credits({ publishableKey }: { publishableKey: string }) {
           />
           <FormField
             control={form.control}
-            name={`credits.${index}.creditAmount`}
+            name={`credits.${index}.amount`}
             render={({ field }) => (
               <FormItem className="relative w-[150px]">
                 <FormLabel className={cn(index !== 0 && "sr-only")}>
